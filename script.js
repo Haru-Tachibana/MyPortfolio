@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', function() {
         'Loading awesome stuff...',
         'Initializing cool features...',
         'Preparing amazing content...',
+        'Setting up the magic...',
         'Almost ready...'
     ];
     
