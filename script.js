@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', function() {
         'Loading awesome stuff...',
         'Initializing cool features...',
         'Preparing amazing content...',
+        'Setting up the magic...',
         'Almost ready...'
     ];
     
@@ -49,6 +50,26 @@ document.addEventListener('DOMContentLoaded', function() {
     // Start loading sequence
     updateProgress();
     setInterval(updateLoadingMessage, 800);
+    
+    // Back to Top Button
+    const backToTopButton = document.getElementById('back-to-top');
+    
+    // Show/hide back to top button based on scroll position
+    window.addEventListener('scroll', function() {
+        if (window.pageYOffset > 300) {
+            backToTopButton.classList.add('visible');
+        } else {
+            backToTopButton.classList.remove('visible');
+        }
+    });
+    
+    // Smooth scroll to top when clicked
+    backToTopButton.addEventListener('click', function() {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
     
     // Background Customizer
     const bgCustomizer = document.getElementById('bg-customizer');
@@ -480,7 +501,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     // Console message
-    console.log('%cHello there!', 'color: #ff0080; font-size: 20px; font-weight: bold;');
+    console.log('%c👋 Hello there!', 'color: #ff0080; font-size: 20px; font-weight: bold;');
     console.log('%cThanks for checking out my portfolio!', 'color: #00bfff; font-size: 14px;');
     console.log('%cFeel free to explore the code and reach out if you have any questions.', 'color: #8a2be2; font-size: 12px;');
 });
