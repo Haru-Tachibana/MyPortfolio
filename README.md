@@ -1,8 +1,8 @@
-# Yuyang Wang - Portfolio Website
+# My Portfolio Website
 
 A modern, animated portfolio website built with HTML, CSS, and JavaScript. Features a dark theme with neon pink and blue highlights, smooth animations, and responsive design.
 
-## 🚀 Features
+## Features
 
 - **Dark Theme**: Modern dark design with neon pink (#ff0080) and blue (#00bfff) accents
 - **Responsive Design**: Fully responsive across all devices
@@ -12,7 +12,7 @@ A modern, animated portfolio website built with HTML, CSS, and JavaScript. Featu
 - **Contact Form**: Functional contact form with validation
 - **Mobile Navigation**: Hamburger menu for mobile devices
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 portfolio-website/
@@ -22,7 +22,7 @@ portfolio-website/
 └── README.md           # This file
 ```
 
-## 🎨 Customization
+## Customization
 
 ### Adding New Projects
 
@@ -87,7 +87,7 @@ The color scheme is defined in CSS variables at the top of `styles.css`:
 3. **Contact Information**: Update email and social links in the contact section
 4. **Stats**: Modify the `.stat-number` and `.stat-label` elements
 
-## 🛠️ Technologies Used
+## Technologies Used
 
 - **HTML5**: Semantic markup
 - **CSS3**: Modern styling with CSS Grid, Flexbox, and animations
@@ -95,7 +95,7 @@ The color scheme is defined in CSS variables at the top of `styles.css`:
 - **Font Awesome**: Icons
 - **Google Fonts**: Inter font family
 
-## 📱 Browser Support
+## Browser Support
 
 - Chrome (latest)
 - Firefox (latest)
@@ -122,7 +122,7 @@ The color scheme is defined in CSS variables at the top of `styles.css`:
 2. Run `vercel` in your project directory
 3. Follow the prompts
 
-## 📝 Maintenance Tips
+## Maintenance Tips
 
 1. **Regular Updates**: Keep your projects section updated with new work
 2. **Performance**: Optimize images before adding them
@@ -130,7 +130,7 @@ The color scheme is defined in CSS variables at the top of `styles.css`:
 4. **Backup**: Keep your code in version control (Git)
 5. **Analytics**: Consider adding Google Analytics for insights
 
-## 🎯 SEO Optimization
+## SEO Optimization
 
 The website includes basic SEO optimization:
 - Semantic HTML structure
@@ -139,7 +139,7 @@ The website includes basic SEO optimization:
 - Clean URL structure
 - Fast loading times
 
-## 🔧 Customization Ideas
+## Customization Ideas
 
 - Add a blog section
 - Include a resume download button
@@ -148,13 +148,13 @@ The website includes basic SEO optimization:
 - Add a testimonials section
 - Include a skills progress bar
 
-## 📞 Support
+## Support
 
 For questions or issues with this portfolio template, please contact:
 - Email: yuyang.wang@example.com
 - GitHub: [@Haru-Tachibana](https://github.com/Haru-Tachibana)
 
-## 📄 License
+## License
 
 This project is open source and available under the [MIT License](LICENSE).
 
