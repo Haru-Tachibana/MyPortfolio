@@ -1,0 +1,28 @@
+{
+  "projects": [
+    {
+      "title": "Personal Portfolio",
+      "description": "A modern, responsive personal website built with Gatsby and React. Features smooth animations, dark theme, and showcases my projects and experiences.",
+      "liveUrl": "https://demo-about-me.netlify.app/",
+      "githubUrl": "https://github.com/Haru-Tachibana/about-me",
+      "technologies": ["Gatsby", "React", "Styled Components", "Netlify"],
+      "featured": true
+    },
+    {
+      "title": "FocusFlow",
+      "description": "A productivity app designed for ADHD and neurodivergent individuals. Features habit tracking, skill development, and visual progress indicators.",
+      "liveUrl": "https://focusflow-lite.netlify.app/",
+      "githubUrl": "https://github.com/Haru-Tachibana/FocusFlow",
+      "technologies": ["TypeScript", "React", "Supabase", "CSS"],
+      "featured": true
+    },
+    {
+      "title": "FridgeMind",
+      "description": "An intelligent food management app that helps users track ingredients, suggest recipes, and reduce food waste through smart recommendations.",
+      "liveUrl": "https://fridgemind.netlify.app/",
+      "githubUrl": "https://github.com/Haru-Tachibana/fridgemind",
+      "technologies": ["TypeScript", "React", "AI/ML", "API"],
+      "featured": true
+    }
+  ]
+}
