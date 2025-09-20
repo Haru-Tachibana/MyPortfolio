@@ -103,7 +103,7 @@ The color scheme is defined in CSS variables at the top of `styles.css`:
 - Edge (latest)
 - Mobile browsers
 
-## 🚀 Deployment
+## Deployment
 
 ### Option 1: Netlify (Recommended)
 1. Push your code to a GitHub repository
