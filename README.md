@@ -8,7 +8,7 @@ A modern, animated portfolio website built with HTML, CSS, and JavaScript. Featu
 - **Responsive Design**: Fully responsive across all devices
 - **Smooth Animations**: CSS and JavaScript animations for enhanced user experience
 - **Interactive Elements**: Hover effects, scroll animations, and interactive components
-- **Easy to Update**: Simple structure for adding new projects and content
+- **Easy to Update**: Projects are managed through JSON file for easy maintenance and updates
 - **Contact Form**: Functional contact form with validation
 - **Mobile Navigation**: Hamburger menu for mobile devices
 
@@ -19,6 +19,8 @@ portfolio-website/
 ├── index.html          # Main HTML file
 ├── styles.css          # CSS styles and animations
 ├── script.js           # JavaScript functionality
+├── projects.json       # Project data (loaded dynamically)
+├── images/             # Project images and assets
 └── README.md           # This file
 ```
 
@@ -26,35 +28,74 @@ portfolio-website/
 
 ### Adding New Projects
 
-To add a new project, simply add a new `.project-card` div in the projects section:
+Projects are now loaded dynamically from `projects.json`. To add a new project, simply add a new project object to the `projects` array in `projects.json`.
 
-```html
-<div class="project-card">
-    <div class="project-image">
-        <div class="project-overlay">
-            <div class="project-links">
-                <a href="YOUR_PROJECT_URL" target="_blank" class="project-link">
-                    <i class="fas fa-external-link-alt"></i>
-                </a>
-                <a href="YOUR_GITHUB_URL" target="_blank" class="project-link">
-                    <i class="fab fa-github"></i>
-                </a>
-            </div>
-        </div>
-    </div>
-    <div class="project-content">
-        <h3 class="project-title">Your Project Name</h3>
-        <p class="project-description">
-            Your project description here.
-        </p>
-        <div class="project-tech">
-            <span class="tech-tag">Technology 1</span>
-            <span class="tech-tag">Technology 2</span>
-            <span class="tech-tag">Technology 3</span>
-        </div>
-    </div>
-</div>
+#### Required Fields for Each Project:
+
+- **title** (string, required): The name of your project
+- **description** (string, required): A brief description of the project
+- **image** (string, optional): Path to the project screenshot/image (relative to root). Use either `image` or `video`, not both
+- **video** (string, optional): Path to the project demo video (relative to root). Supported formats: mp4, webm, ogg, mov, avi. Use either `image` or `video`, not both
+- **imageAlt** (string, optional): Alt text for the image (defaults to title if not provided)
+- **videoAlt** (string, optional): Alt text for the video (defaults to title if not provided)
+- **liveUrl** (string, optional): URL to the live demo of the project. Omit for console apps or projects without web demos
+- **githubUrl** (string, optional): URL to the GitHub repository
+- **technologies** (array, required): Array of technology tags to display
+- **featured** (boolean, optional): Whether to display the project (defaults to true)
+
+#### Example Project Entry (Web App with Image):
+
+```json
+{
+  "projects": [
+    {
+      "title": "My New Project",
+      "description": "A brief description of what the project does and its key features. This text will be displayed on the project card.",
+      "image": "images/projects/my-project.png",
+      "imageAlt": "My New Project Screenshot",
+      "liveUrl": "https://my-project-demo.netlify.app/",
+      "githubUrl": "https://github.com/username/my-project",
+      "technologies": ["React", "TypeScript", "CSS", "Node.js"],
+      "featured": true
+    }
+  ]
+}
 ```
+
+#### Example Project Entry (Console App with Video):
+
+```json
+{
+  "projects": [
+    {
+      "title": "My Console App",
+      "description": "A console application that does something awesome.",
+      "video": "images/projects/my-app-demo.mp4",
+      "videoAlt": "My Console App Demo",
+      "githubUrl": "https://github.com/username/my-app",
+      "technologies": ["C#", ".NET", "Console App", "API"],
+      "featured": true
+    }
+  ]
+}
+```
+
+#### Steps to Add a Project:
+
+1. Add your project image or video to the `images/projects/` directory
+2. Open `projects.json`
+3. Add a new project object to the `projects` array following the structure above
+4. Save the file - the website will automatically load and display the new project
+
+#### Notes:
+
+- Use either `image` or `video` field, not both. The system will automatically detect video files by extension
+- The `liveUrl` field is optional - omit it for console apps or projects without web demos
+- The `githubUrl` field is optional but recommended
+- The `featured` field defaults to `true` - set it to `false` to hide a project without deleting it
+- Keep media file sizes optimized for better performance (videos will autoplay, loop, and be muted)
+- Supported video formats: mp4, webm, ogg, mov, avi
+- Ensure media paths are correct relative to the root directory
 
 ### Updating Tech Stack
 

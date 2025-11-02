@@ -1,16 +1,30 @@
 {
   "projects": [
     {
-      "title": "Personal Portfolio",
-      "description": "A modern, responsive personal website built with Gatsby and React. Features smooth animations, dark theme, and showcases my projects and experiences.",
+      "title": "QuackCash",
+      "description": "An interactive financial literacy web game for kids built during NTU Hack-a-Duck Hackathon within 24 hours. Collaborated in a cross-disciplinary team to develop engaging gameplay that teaches financial concepts to young generation. Designed and implemented responsive UI and event-driven gameplay logic for cross-device experience. Awards: Employer Challenge Prize (Capital One), Special Prize (Department of Computer Science).",
+      "image": "images/projects/QuackCash.png",
+      "imageAlt": "QuackCash Financial Literacy Game Screenshot",
+      "liveUrl": "https://quackcash.netlify.app/",
+      "githubUrl": "https://github.com/Haru-Tachibana/QuackCash",
+      "technologies": ["HTML", "CSS", "JavaScript", "Hackathon", "Financial Literacy"],
+      "featured": true
+    },
+    {
+      "title": "Personal Interests Website",
+      "description": "A personal website showcasing my hobbies, music tastes, anime interests, and life experiences. Built with Gatsby and React, have a look if interested in my music tastes or random fun facts about me.",
+      "image": "images/projects/about-me.png",
+      "imageAlt": "Personal Interests Website Screenshot",
       "liveUrl": "https://demo-about-me.netlify.app/",
       "githubUrl": "https://github.com/Haru-Tachibana/about-me",
-      "technologies": ["Gatsby", "React", "Styled Components", "Netlify"],
+      "technologies": ["Personal Website", "Gatsby", "React", "Styled Components", "Netlify"],
       "featured": true
     },
     {
       "title": "FocusFlow",
-      "description": "A productivity app designed for ADHD and neurodivergent individuals. Features habit tracking, skill development, and visual progress indicators.",
+      "description": "A productivity app designed for ADHD and neurodivergent individuals. Features habit tracking, skill development, and visual progress indicators. Perfect for half-way quitters :D",
+      "image": "images/projects/focusflow.png",
+      "imageAlt": "FocusFlow App Screenshot",
       "liveUrl": "https://focusflow-lite.netlify.app/",
       "githubUrl": "https://github.com/Haru-Tachibana/FocusFlow",
       "technologies": ["TypeScript", "React", "Supabase", "CSS"],
@@ -18,10 +32,31 @@
     },
     {
       "title": "FridgeMind",
-      "description": "An intelligent food management app that helps users track ingredients, suggest recipes, and reduce food waste through smart recommendations.",
+      "description": "An intelligent food management app that helps users track ingredients, suggest recipes, and reduce food waste through smart recommendations. \"Save money, reduce waste.\"",
+      "image": "images/projects/fridgemind.png",
+      "imageAlt": "FridgeMind App Screenshot",
       "liveUrl": "https://fridgemind.netlify.app/",
       "githubUrl": "https://github.com/Haru-Tachibana/fridgemind",
       "technologies": ["TypeScript", "React", "AI/ML", "API"],
+      "featured": true
+    },
+    {
+      "title": "Kanso",
+      "description": "A minimalist decluttering app inspired by Japanese Zen rock gardens (Karesansui). Built with Flutter for iOS and Android. *Still developing...feel free to explore this demo",
+      "image": "images/projects/Kanso-screenshot.jpg",
+      "imageAlt": "Kanso App Screenshot",
+      "liveUrl": "https://kanso-zen.netlify.app/",
+      "githubUrl": "https://github.com/Haru-Tachibana/Kanso",
+      "technologies": ["Dart", "Flutter", "Mobile App", "Cross Platform"],
+      "featured": true
+    },
+    {
+      "title": "UK Train Timetable: !=DE/AYED",
+      "description": "A console application for live UK train departures using the National Rail Darwin API. Features AI-powered natural language queries (Groq or OpenRouter) allowing users to search trains using conversational queries like \"Trains from Paddington to Bristol around 3pm\". Also supports traditional step-by-step mode for precise searches. Built with C# and .NET 9.0.",
+      "video": "images/projects/DELAYED.MP4",
+      "videoAlt": "UK Train Timetable Console App Demo",
+      "githubUrl": "https://github.com/Haru-Tachibana/UK-Train-Timetable",
+      "technologies": ["C#", ".NET", "Console App", "API Integration", "AI/ML"],
       "featured": true
     }
   ]

@@ -1,6 +1,114 @@
 // Portfolio Website JavaScript
 // Author: Yuyang Wang
 
+// Load and render projects from JSON
+async function loadProjects() {
+    try {
+        const response = await fetch('projects.json');
+        if (!response.ok) {
+            throw new Error('Failed to load projects');
+        }
+        const data = await response.json();
+        renderProjects(data.projects);
+    } catch (error) {
+        console.error('Error loading projects:', error);
+        // Fallback: show error message in projects section
+        const projectsGrid = document.querySelector('.projects-grid');
+        if (projectsGrid) {
+            projectsGrid.innerHTML = '<p style="text-align: center; color: #ff0080; padding: 2rem;">Unable to load projects. Please refresh the page.</p>';
+        }
+    }
+}
+
+// Render projects to the DOM
+function renderProjects(projects) {
+    const projectsGrid = document.querySelector('.projects-grid');
+    if (!projectsGrid) {
+        console.error('Projects grid container not found');
+        return;
+    }
+
+    // Clear existing content
+    projectsGrid.innerHTML = '';
+
+    // Filter featured projects if needed, or show all
+    const featuredProjects = projects.filter(project => project.featured !== false);
+
+    // Create project cards
+    featuredProjects.forEach(project => {
+        const projectCard = document.createElement('div');
+        projectCard.className = 'project-card';
+
+        // Build technologies HTML
+        const techTags = project.technologies.map(tech => 
+            `<span class="tech-tag">${tech}</span>`
+        ).join('');
+
+        // Determine if media is video or image
+        // Prioritize explicit video field, otherwise check file extension
+        const mediaPath = project.video || project.image;
+        const mediaExtension = mediaPath ? mediaPath.split('.').pop().toLowerCase() : '';
+        const isVideo = project.video ? true : ['mp4', 'webm', 'ogg', 'mov', 'avi'].includes(mediaExtension);
+        const mediaAlt = project.videoAlt || project.imageAlt || project.title;
+
+        // Build media element (video or image)
+        const mediaElement = isVideo 
+            ? `<video src="${mediaPath}" alt="${mediaAlt}" class="project-screenshot" autoplay muted loop playsinline></video>`
+            : `<img src="${project.image}" alt="${mediaAlt}" class="project-screenshot">`;
+
+        projectCard.innerHTML = `
+            <div class="project-image">
+                ${mediaElement}
+                <div class="project-overlay">
+                    <div class="project-links">
+                        ${project.liveUrl ? `
+                        <a href="${project.liveUrl}" target="_blank" class="project-link" title="View Live Demo">
+                            <i class="fas fa-external-link-alt"></i>
+                        </a>
+                        ` : ''}
+                        ${project.githubUrl ? `
+                        <a href="${project.githubUrl}" target="_blank" class="project-link" title="View Source Code">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        ` : ''}
+                    </div>
+                </div>
+            </div>
+            <div class="project-content">
+                <h3 class="project-title">${project.title}</h3>
+                <p class="project-description">${project.description}</p>
+                <div class="project-tech">
+                    ${techTags}
+                </div>
+            </div>
+        `;
+
+        projectsGrid.appendChild(projectCard);
+    });
+
+    // Re-initialize project card hover effects after rendering
+    initializeProjectCardEffects();
+}
+
+// Initialize project card hover effects
+function initializeProjectCardEffects() {
+    const projectCards = document.querySelectorAll('.project-card');
+    projectCards.forEach(card => {
+        // Only add listeners if they don't already have the data attribute
+        if (!card.hasAttribute('data-effects-initialized')) {
+            card.setAttribute('data-effects-initialized', 'true');
+            
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-15px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        }
+    });
+}
+
 document.addEventListener('DOMContentLoaded', function() {
     // Loading Screen
     const loadingScreen = document.getElementById('loading-screen');
@@ -50,6 +158,9 @@ document.addEventListener('DOMContentLoaded', function() {
     // Start loading sequence
     updateProgress();
     setInterval(updateLoadingMessage, 800);
+    
+    // Load projects from JSON
+    loadProjects();
     
     // Back to Top Button
     const backToTopButton = document.getElementById('back-to-top');
@@ -283,17 +394,8 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Project card hover effects
-    const projectCards = document.querySelectorAll('.project-card');
-    projectCards.forEach(card => {
-        card.addEventListener('mouseenter', function() {
-            this.style.transform = 'translateY(-15px) scale(1.02)';
-        });
-        
-        card.addEventListener('mouseleave', function() {
-            this.style.transform = 'translateY(0) scale(1)';
-        });
-    });
+    // Project card hover effects are now handled by initializeProjectCardEffects()
+    // after projects are dynamically loaded
     
     // Contact form handling
     const contactForm = document.querySelector('.form');
