@@ -443,7 +443,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 // Send email using EmailJS
                 // Replace 'YOUR_SERVICE_ID' and 'YOUR_TEMPLATE_ID' with your actual values
                 const response = await emailjs.send(
-                    'YOUR_SERVICE_ID',    // Replace with your EmailJS Service ID
+                    'service_yuyangw',    // Replace with your EmailJS Service ID
                     'YOUR_TEMPLATE_ID',   // Replace with your EmailJS Template ID
                     {
                         from_name: name,
