@@ -434,22 +434,32 @@ document.addEventListener('DOMContentLoaded', function() {
             submitButton.textContent = 'Sending...';
             
             try {
-                // Initialize EmailJS (if not already initialized)
-                // Replace 'YOUR_PUBLIC_KEY' with your EmailJS Public Key from https://www.emailjs.com/
+                // Check if config is loaded
+                if (typeof emailjsConfig === 'undefined') {
+                    throw new Error('EmailJS configuration not found. Please create config.js from config.example.js');
+                }
+                
+                // Validate config values
+                if (!emailjsConfig.publicKey || emailjsConfig.publicKey === 'YOUR_PUBLIC_KEY' ||
+                    !emailjsConfig.serviceId || emailjsConfig.serviceId === 'YOUR_SERVICE_ID' ||
+                    !emailjsConfig.templateId || emailjsConfig.templateId === 'YOUR_TEMPLATE_ID') {
+                    throw new Error('EmailJS configuration is incomplete. Please update config.js with your credentials.');
+                }
+                
+                // Initialize EmailJS with config
                 emailjs.init({
-                    publicKey: "YOUR_PUBLIC_KEY" // Replace with your EmailJS Public Key
+                    publicKey: emailjsConfig.publicKey
                 });
                 
                 // Send email using EmailJS
-                // Replace 'YOUR_SERVICE_ID' and 'YOUR_TEMPLATE_ID' with your actual values
                 const response = await emailjs.send(
-                    'service_yuyangw',    // Replace with your EmailJS Service ID
-                    'YOUR_TEMPLATE_ID',   // Replace with your EmailJS Template ID
+                    emailjsConfig.serviceId,
+                    emailjsConfig.templateId,
                     {
                         from_name: name,
                         from_email: email,
                         message: message,
-                        to_email: 'yuyang.wang027@gmail.com' // Your email address
+                        to_email: emailjsConfig.toEmail || 'yuyang.wang027@gmail.com'
                     }
                 );
                 
@@ -463,11 +473,15 @@ document.addEventListener('DOMContentLoaded', function() {
             } catch (error) {
                 console.error('EmailJS Error:', error);
                 // Provide helpful error message
-                if (error.text && error.text.includes('Invalid')) {
-                    showNotification('Email service not configured. Please set up EmailJS credentials. See EMAILJS_SETUP.md for instructions.', 'error');
-                } else {
-                    showNotification('Failed to send message. Please try again or contact me directly at yuyang.wang027@gmail.com', 'error');
+                let errorMessage = 'Failed to send message. Please try again or contact me directly at yuyang.wang027@gmail.com';
+                
+                if (error.message && error.message.includes('configuration')) {
+                    errorMessage = error.message + ' See EMAILJS_SETUP.md for instructions.';
+                } else if (error.text && error.text.includes('Invalid')) {
+                    errorMessage = 'Email service not configured correctly. Please check your config.js file and EmailJS_SETUP.md for instructions.';
                 }
+                
+                showNotification(errorMessage, 'error');
             } finally {
                 // Re-enable submit button
                 submitButton.disabled = false;

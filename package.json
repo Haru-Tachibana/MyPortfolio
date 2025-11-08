@@ -1,0 +1,16 @@
+{
+  "name": "portfolio-website",
+  "version": "1.0.0",
+  "description": "Personal portfolio website",
+  "scripts": {
+    "build:config": "node build-config.js",
+    "prebuild": "npm run build:config"
+  },
+  "keywords": [
+    "portfolio",
+    "website"
+  ],
+  "author": "Yuyang Wang",
+  "license": "MIT"
+}
+

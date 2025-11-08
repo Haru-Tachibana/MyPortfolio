@@ -198,10 +198,18 @@ The contact form uses EmailJS to send emails. To enable email functionality:
    - Create a free account at [EmailJS](https://www.emailjs.com/)
    - Add an email service (Gmail, Outlook, etc.)
    - Create an email template
-   - Update the credentials in `script.js`:
+   - Create `config.js` from the example:
+     ```bash
+     cp config.example.js config.js
+     ```
+   - Update the credentials in `config.js`:
      - Replace `YOUR_PUBLIC_KEY` with your EmailJS Public Key
      - Replace `YOUR_SERVICE_ID` with your Service ID
      - Replace `YOUR_TEMPLATE_ID` with your Template ID
+
+**Note:** The `config.js` file is in `.gitignore` to keep your credentials safe. For deployment, you can either:
+- Manually create `config.js` on your hosting platform, or
+- Use environment variables with the build script (see EMAILJS_SETUP.md)
 
 The free tier includes 200 emails per month, which is perfect for a portfolio site.
 
