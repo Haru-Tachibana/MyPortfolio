@@ -9,7 +9,7 @@ A modern, animated portfolio website built with HTML, CSS, and JavaScript. Featu
 - **Smooth Animations**: CSS and JavaScript animations for enhanced user experience
 - **Interactive Elements**: Hover effects, scroll animations, and interactive components
 - **Easy to Update**: Projects are managed through JSON file for easy maintenance and updates
-- **Contact Form**: Functional contact form with validation
+- **Contact Form**: Functional contact form with EmailJS integration for sending emails
 - **Mobile Navigation**: Hamburger menu for mobile devices
 
 ## Project Structure
@@ -189,10 +189,26 @@ The website includes basic SEO optimization:
 - Add a testimonials section
 - Include a skills progress bar
 
+## Contact Form Setup
+
+The contact form uses EmailJS to send emails. To enable email functionality:
+
+1. **Follow the setup guide:** See [EMAILJS_SETUP.md](EMAILJS_SETUP.md) for detailed instructions
+2. **Quick setup:**
+   - Create a free account at [EmailJS](https://www.emailjs.com/)
+   - Add an email service (Gmail, Outlook, etc.)
+   - Create an email template
+   - Update the credentials in `script.js`:
+     - Replace `YOUR_PUBLIC_KEY` with your EmailJS Public Key
+     - Replace `YOUR_SERVICE_ID` with your Service ID
+     - Replace `YOUR_TEMPLATE_ID` with your Template ID
+
+The free tier includes 200 emails per month, which is perfect for a portfolio site.
+
 ## Support
 
 For questions or issues with this portfolio template, please contact:
-- Email: yuyang.wang@example.com
+- Email: yuyang.wang027@gmail.com
 - GitHub: [@Haru-Tachibana](https://github.com/Haru-Tachibana)
 
 ## License

@@ -11,7 +11,7 @@
       "featured": true
     },
     {
-      "title": "Personal Interests Website",
+      "title": "About Me Website",
       "description": "A personal website showcasing my hobbies, music tastes, anime interests, and life experiences. Built with Gatsby and React, have a look if interested in my music tastes or random fun facts about me.",
       "image": "images/projects/about-me.png",
       "imageAlt": "Personal Interests Website Screenshot",
@@ -57,6 +57,16 @@
       "videoAlt": "UK Train Timetable Console App Demo",
       "githubUrl": "https://github.com/Haru-Tachibana/UK-Train-Timetable",
       "technologies": ["C#", ".NET", "Console App", "API Integration", "AI/ML"],
+      "featured": true
+    },
+    {
+      "title": "Fisho vs Whiskers",
+      "description": "A lighthearted 1v1 card battle game where strategy meets cuteness! Face off against an AI opponent in this fast-paced card game. Be the first to empty your hand by playing valid combinations like pairs, triples, sequences, and bombs. Features intuitive gameplay mechanics inspired by classic card games with a modern web-based interface. Built with Node.js backend and vanilla JavaScript frontend.",
+      "image": "images/projects/fisho.png",
+      "imageAlt": "Fisho vs Whiskers Card Game Screenshot",
+      "liveUrl": "https://fisho-vs-whiskers.onrender.com/",
+      "githubUrl": "https://github.com/Haru-Tachibana/Fisho-vs-Whiskers",
+      "technologies": ["JavaScript", "Node.js", "HTML", "CSS", "Docker", "Web Game"],
       "featured": true
     }
   ]

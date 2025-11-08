@@ -400,8 +400,15 @@ document.addEventListener('DOMContentLoaded', function() {
     // Contact form handling
     const contactForm = document.querySelector('.form');
     if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
+        contactForm.addEventListener('submit', async function(e) {
             e.preventDefault();
+            
+            // Check if EmailJS is loaded
+            if (typeof emailjs === 'undefined') {
+                showNotification('Email service is not configured. Please contact me directly at yuyang.wang027@gmail.com', 'error');
+                console.error('EmailJS is not loaded. Make sure the script is included in the HTML.');
+                return;
+            }
             
             // Get form data
             const formData = new FormData(this);
@@ -420,9 +427,52 @@ document.addEventListener('DOMContentLoaded', function() {
                 return;
             }
             
-            // Simulate form submission
-            showNotification('Message sent successfully! I\'ll get back to you soon.', 'success');
-            this.reset();
+            // Get submit button and disable it during submission
+            const submitButton = this.querySelector('button[type="submit"]');
+            const originalButtonText = submitButton.textContent;
+            submitButton.disabled = true;
+            submitButton.textContent = 'Sending...';
+            
+            try {
+                // Initialize EmailJS (if not already initialized)
+                // Replace 'YOUR_PUBLIC_KEY' with your EmailJS Public Key from https://www.emailjs.com/
+                emailjs.init({
+                    publicKey: "YOUR_PUBLIC_KEY" // Replace with your EmailJS Public Key
+                });
+                
+                // Send email using EmailJS
+                // Replace 'YOUR_SERVICE_ID' and 'YOUR_TEMPLATE_ID' with your actual values
+                const response = await emailjs.send(
+                    'YOUR_SERVICE_ID',    // Replace with your EmailJS Service ID
+                    'YOUR_TEMPLATE_ID',   // Replace with your EmailJS Template ID
+                    {
+                        from_name: name,
+                        from_email: email,
+                        message: message,
+                        to_email: 'yuyang.wang027@gmail.com' // Your email address
+                    }
+                );
+                
+                // Success
+                if (response.status === 200) {
+                    showNotification('Message sent successfully! I\'ll get back to you soon.', 'success');
+                    this.reset();
+                } else {
+                    throw new Error('Failed to send message');
+                }
+            } catch (error) {
+                console.error('EmailJS Error:', error);
+                // Provide helpful error message
+                if (error.text && error.text.includes('Invalid')) {
+                    showNotification('Email service not configured. Please set up EmailJS credentials. See EMAILJS_SETUP.md for instructions.', 'error');
+                } else {
+                    showNotification('Failed to send message. Please try again or contact me directly at yuyang.wang027@gmail.com', 'error');
+                }
+            } finally {
+                // Re-enable submit button
+                submitButton.disabled = false;
+                submitButton.textContent = originalButtonText;
+            }
         });
     }
     
